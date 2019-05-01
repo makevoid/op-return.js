@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "bitcore-lib": "^8.3.0"
+  }
+}

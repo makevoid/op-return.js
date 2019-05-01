@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "bitcore-lib": "^8.3.0"
+    "axios": "^0.18.0",
+    "bitcore-lib": "^8.3.0",
+    "blockchain-api-basic": "github:makevoid/blockchain-info-api-basic",
+    "querystring": "^0.2.0"
   }
 }

@@ -41,3 +41,7 @@ There is no need to write complex smart contracts or find the most popular or th
 Enjoy
 
 @makevoid
+
+---
+
+See some [notes about Bitcoin](https://github.com/makevoid/op-return.js/blob/master/Readme.notes.md)

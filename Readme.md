@@ -1,5 +1,7 @@
 # Op Return JS
 
+#### Status: WIP
+
 ### OP Return example - Timestamp your PostgresSQL DB or your PoA Blockchian with an OP_RETURN on the bitcoin blockchain
 
 At the moment it's the implementation is just REPL based, take a look at `op-return-repl.js`.

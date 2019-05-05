@@ -1,34 +1,27 @@
 const { readFileSync } = require('fs')
-const { PrivateKey, Address, Transaction } = require('bitcore-lib')
-const { balance, utxos, pushTx } = require('blockchain-api-basic')
-const convertUtxos = require('./utils/convertUtxos')
 const reader = require("readline-sync")
-
+const { PrivateKey, Address, Transaction } = require('bitcore-lib')
+const { balance, utxos } = require('blockchain-api-basic')
+const pushTx = require('./lib/pushTx')
+const convertUtxos = require('./utils/convertUtxos')
+const catchRequestErrors = require('./utils/catchRequestErrors')
 
 const pvtKeyString = readFileSync(".privateKey").toString().trim()
+
+// load a Private key (generate one with ./utils/createPvtKey.js)
 const pvtKey = new PrivateKey(pvtKeyString)
 const address = pvtKey.toAddress().toString()
 console.log("Private key loaded")
 console.log(`Address: ${address}\n`)
 
-const axios = require('axios')
-const qs = require('querystring')
-
-const pushtx = async (txHex) => {
-  const url = 'https://blockchain.info/pushtx'
-  const resp = await axios.post(url, qs.stringify({
-    tx: txHex,
-  }))
-  return resp.body
-}
-
 ;(async () => {
 
   try {
+    // optional - get address balance via blockchain.info
     const bal = await balance(address)
     console.log(`Balance: ${bal} (sat)\n`)
 
-    // process.exit() // ---------------------------------------
+    // ---
 
     console.log("Get UTXOs from bchain.info:")
     let utxoSet = await utxos(address)
@@ -44,16 +37,20 @@ const pushtx = async (txHex) => {
     if (utxoSet.length == 0) process.exit()
 
     const utxoSelection = reader.question("Select UTXO: ")
-    console.log("\n")
-
     utxoSet = [ utxoSet[new Number(utxoSelection)] ]
-
+    console.log("\n")
     utxoSet = convertUtxos(utxoSet)
     console.log("UTXO, selected and converted for bitcore")
     console.log(utxoSet)
     console.log("\n")
 
-    // process.exit() // ---------------------------------------
+    // ---
+
+    console.log("Type the message you want to be written to the blockchain")
+    const message = reader.question("Message:")
+    console.log("\n")
+
+    // ---
 
     const amount = 1000
 
@@ -61,10 +58,10 @@ const pushtx = async (txHex) => {
         .from(utxoSet)
         .to(address, amount)
         .change(address)
-        .addData("hello world")
+        .addData(message)
         .fee(1000)
         .sign(pvtKey)
-        // .fee(5430) // minimum - works on bsv
+        // .fee(5430) // minimum - should work on on bsv, you can lower the fee on bch, not so much on ltc
 
     const txHex = tx.serialize()
 
@@ -72,7 +69,7 @@ const pushtx = async (txHex) => {
     console.log(txHex)
     console.log("\n")
 
-    // process.exit() // ---------------------------------------
+    // ---
 
     console.log("Broadcasting TX...\n")
     const resp = await pushtx(txHex)
@@ -80,13 +77,7 @@ const pushtx = async (txHex) => {
     console.log(resp)
 
   } catch (err) {
-    console.log("Caught an Error")
-    if (err.response){
-      console.error(err.response.statusText)
-      console.error(err.response.data)
-    } else {
-      console.error(err)
-    }
+    catchRequestErrors(err)
     console.log("exiting...")
   }
 

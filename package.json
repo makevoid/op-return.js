@@ -3,6 +3,7 @@
     "axios": "^0.18.0",
     "bitcore-lib": "^8.3.0",
     "blockchain-api-basic": "github:makevoid/blockchain-info-api-basic",
-    "querystring": "^0.2.0"
+    "querystring": "^0.2.0",
+    "readline-sync": "^1.4.9"
   }
 }

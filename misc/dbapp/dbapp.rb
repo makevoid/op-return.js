@@ -1,10 +1,5 @@
 require_relative 'env'
-
-DB.create_table :documents do
-  primary_key :id
-  String :title,   null: false
-  String :content, null: false
-end unless DB.table_exists?(:documents)
+require_relative './db/db'
 
 createDoc = -> {
   num = DB[:documents].count + 1
@@ -23,6 +18,7 @@ loop do
     puts doc.to_yaml
     docs << doc
   end
+  DB[:documents].each do |doc|
   json = docs.to_json
   puts json
   File.open("dump.json", "r"){ |f| f.write json }

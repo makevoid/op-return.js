@@ -1,0 +1,21 @@
+version: '3.6'
+
+services:
+  dbapp:
+    build:
+      context: .
+
+  database:
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=foo
+      - POSTGRES_DB=opreturn
+    image: postgres
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:

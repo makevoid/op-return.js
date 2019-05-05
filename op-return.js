@@ -18,7 +18,7 @@ const pushtx = async (txHex) => {
   const resp = await axios.post(url, qs.stringify({
     tx: txHex,
   }))
-  return resp.body.data
+  return resp.body
 }
 
 ;(async () => {
@@ -57,8 +57,8 @@ const pushtx = async (txHex) => {
         .from(utxoSet)
         .to(address, amount)
         .change(address)
-        .fee(10000)
         .addData("hello world")
+        .fee(1000)
         .sign(pvtKey)
         // .fee(5430) // minimum - works on bsv
 
@@ -77,7 +77,12 @@ const pushtx = async (txHex) => {
 
   } catch (err) {
     console.log("Caught an Error")
-    console.error(err)
+    if (err.response){
+      console.error(err.response.statusText)
+      console.error(err.response.data)
+    } else {
+      console.error(err)
+    }
     console.log("exiting...")
   }
 

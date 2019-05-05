@@ -3,6 +3,7 @@ const reader = require("readline-sync")
 const { PrivateKey, Address, Transaction } = require('bitcore-lib')
 const { balance, utxos } = require('blockchain-api-basic')
 const pushTx = require('./lib/pushTx')
+const validateOpReturnMessage = require('./lib/validateOpReturnMessage')
 const convertUtxos = require('./utils/convertUtxos')
 const catchRequestErrors = require('./utils/catchRequestErrors')
 
@@ -47,7 +48,8 @@ console.log(`Address: ${address}\n`)
     // ---
 
     console.log("Type the message you want to be written to the blockchain")
-    const message = reader.question("Message:")
+    const message = reader.question("Message: ")
+    validateOpReturnMessage(message)
     console.log("\n")
 
     // ---

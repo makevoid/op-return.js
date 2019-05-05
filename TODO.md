@@ -1,0 +1,4 @@
+- make the repl work with CLI arguments so it doesn't needs user input
+- finish sample DB
+- create a parity-solo based example as well (for the PoA chainpointing example)
+- create a dockerized process to timestamp

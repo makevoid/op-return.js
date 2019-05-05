@@ -34,7 +34,7 @@ const tx = new Transaction()
 await pushtx(tx.serialize())
 ```
 
-And essentially with a dozen of lines of bitcore-lib JS you can secure your PoA blockchain or blockchainify your app.
+And essentially with a dozen of lines of bitcore-lib JS you can secure your PoA blockchain or to "blockchainify" your app.
 
 There is no need to write complex smart contracts or find the most popular or the most obscure blockchain to achieve immutable timestamping. With this and with backups made by every party involved in the system you should beat in development time all the other options available.
 

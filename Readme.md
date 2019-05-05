@@ -4,6 +4,16 @@
 
 At the moment it's the implementation is just REPL based, take a look at `op-return-repl.js`.
 
+### Install
+
+    npm install
+
+### Running this
+
+    node op-return-repl.js
+
+### Explanation
+
 The implementation is basically an OP_RETURN transaction with Bitcore-Lib:
 
 ```js

@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
-gem 'ipfs'
+gem "digest-sha3", git: "https://github.com/izetex/digest-sha3-ruby"
+gem 'ethereum.rb'
 
 gem "rake"

@@ -1,3 +1,6 @@
 require_relative 'env'
 
-puts "hello world"
+CONTRACT.transact.set "rand-#{rand 10}"
+sleep 1
+value = CONTRACT.call.get
+puts value

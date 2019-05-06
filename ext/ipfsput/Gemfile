@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
-gem 'ipfs'
+gem 'ipfs', require: 'ipfs/client'
 
 gem "rake"

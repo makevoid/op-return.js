@@ -1,32 +1,35 @@
+GIT
+  remote: https://github.com/izetex/digest-sha3-ruby
+  revision: c266a32868b95349f39a61395ff8c78f98951410
+  specs:
+    digest-sha3 (1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
-    domain_name (0.5.20180417)
-      unf (>= 0.0.5, < 1.0.0)
-    http (2.2.2)
-      addressable (~> 2.3)
-      http-cookie (~> 1.0)
-      http-form_data (~> 1.0.1)
-      http_parser.rb (~> 0.6.0)
-    http-cookie (1.0.3)
-      domain_name (~> 0.5)
-    http-form_data (1.0.3)
-    http_parser.rb (0.6.0)
-    ipfs (0.2.1)
-      http (~> 2.2)
-    public_suffix (3.0.3)
+    activesupport (5.2.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    concurrent-ruby (1.1.5)
+    ethereum.rb (2.2)
+      activesupport (>= 4.0)
+      digest-sha3 (~> 1.1)
+    i18n (1.6.0)
+      concurrent-ruby (~> 1.0)
+    minitest (5.11.3)
     rake (12.3.2)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.6)
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  ipfs
+  digest-sha3!
+  ethereum.rb
   rake
 
 BUNDLED WITH

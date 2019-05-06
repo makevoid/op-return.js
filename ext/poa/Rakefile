@@ -1,0 +1,6 @@
+desc "Run"
+task :run do
+  sh "bundle exec ruby poa.rb"
+end
+
+task default: :run

@@ -1,11 +1,16 @@
 version: "3.6"
 
 services:
+  ipfsput:
+    build:
+      context: .
+
   ipfs:
     image: appliedblockchain/ipfs-solo:latest
     volumes:
       - ipfs-data:/data/ipfs/blocks
     ports:
       - "5001:5001"
+      
 volumes:
   ipfs-data:

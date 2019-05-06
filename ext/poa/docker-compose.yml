@@ -2,11 +2,15 @@ version: "3.6"
 
 services:
   poa:
+    build:
+      context: .
+
+  parity:
     image: appliedblockchain/parity-solo-instant
     ports:
       - 8545:8545
     volumes:
-      - poa:/solo/chains
+      - parity:/solo/chains
 
 volumes:
-  poa:
+  parity:

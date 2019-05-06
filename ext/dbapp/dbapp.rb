@@ -11,16 +11,19 @@ createDoc = -> {
 
 createDoc.()
 
-loop do
+loop {
   createDoc.()
   docs = []
-  DB[:documents].each do |doc|
+  DB[:documents].each { |doc|
     puts doc.to_yaml
     docs << doc
-  end
-  DB[:documents].each do |doc|
-  json = docs.to_json
-  puts json
-  File.open("dump.json", "r"){ |f| f.write json }
+  }
+  docs_json = docs.to_json
+  hash = Digest::SHA256.hexdigest docs_json
+  json = {
+    documents: docs,
+    hash: hash # this hash should be saved in an OP_RETURN via `./bin/node-opreturn $HASH`
+  }.to_json
+  File.open("db/dump.json", "w"){ |f| f.write json }
   sleep 20
-end
+}

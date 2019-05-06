@@ -1,5 +1,6 @@
 require 'json'
 require 'yaml'
+require 'digest/sha2'
 require 'bundler'
 Bundler.require :default
 

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# TODO: finish this!
+
+# usage: ./op-return $HASH
+
+# TODO: rename op-return-repl in op-return.js
+
+node op-return-repl.js $*

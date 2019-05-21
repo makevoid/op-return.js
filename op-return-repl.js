@@ -74,7 +74,7 @@ console.log(`Address: ${address}\n`)
     // ---
 
     console.log("Broadcasting TX...\n")
-    const resp = await pushtx(txHex)
+    const resp = await pushTx(txHex)
     console.log("response:")
     console.log(resp)
 

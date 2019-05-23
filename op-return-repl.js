@@ -1,8 +1,7 @@
 const { readFileSync } = require('fs')
 const reader = require("readline-sync")
 const { PrivateKey, Address, Transaction } = require('bitcore-lib')
-const { balance, utxos } = require('blockchain-api-basic')
-const pushTx = require('./lib/pushTx')
+const { balance, utxos, pushTx } = require('blockchain-api-basic')
 const validateOpReturnMessage = require('./lib/validateOpReturnMessage')
 const convertUtxos = require('./utils/convertUtxos')
 const filterUtxos = require('./utils/filterUtxos')
@@ -37,7 +36,11 @@ console.log(`Address: ${address}\n`)
     })
     console.log('')
 
-    if (utxoSet.length == 0) process.exit()
+    if (utxoSet.length == 0) {
+      console.log("[]\n")
+      console.log("No available UTXOs to spend, deposit few thousand satoshis to your address.\n")
+      process.exit()
+    }
 
     const utxoSelection = reader.question("Select UTXO: ")
     utxoSet = [ utxoSet[new Number(utxoSelection)] ]

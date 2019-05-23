@@ -2,7 +2,7 @@
 
 #### Status: WIP
 
-### OP Return example - Timestamp your PostgresSQL DB or your PoA Blockchian with an OP_RETURN on the bitcoin blockchain
+### OP Return example - Timestamp any hash, proof, JSON, digital signature, file fingerprint, PostgresSQL DB dump hash or your PoA Blockchain tip with an OP_RETURN on the bitcoin blockchain
 
 At the moment it's the implementation is just REPL based, take a look at `op-return-repl.js`.
 

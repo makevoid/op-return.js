@@ -5,6 +5,7 @@ const { balance, utxos } = require('blockchain-api-basic')
 const pushTx = require('./lib/pushTx')
 const validateOpReturnMessage = require('./lib/validateOpReturnMessage')
 const convertUtxos = require('./utils/convertUtxos')
+const filterUtxos = require('./utils/filterUtxos')
 const catchRequestErrors = require('./utils/catchRequestErrors')
 
 const pvtKeyString = readFileSync(".privateKey").toString().trim()
@@ -26,6 +27,7 @@ console.log(`Address: ${address}\n`)
 
     console.log("Get UTXOs from bchain.info:")
     let utxoSet = await utxos(address)
+    utxoSet = filterUtxos(utxoSet)
 
     utxoSet.map((utxo, idx) => {
       console.log(`UTXO #${idx}:`)

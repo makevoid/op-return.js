@@ -66,10 +66,9 @@ console.log(`Address: ${address}\n`)
         .to(address, amount)
         .change(address)
         .addData(message)
-        .fee(1000)
+        .fee(1000) // minimum fee of 1k sat, use 5k+ sat for currency transactions (BTC)
         .sign(pvtKey)
-        // .fee(5430) // minimum - should work on on bsv, you can lower the fee on bch, not so much on ltc
-
+    
     const txHex = tx.serialize()
 
     console.log("TX serialized:")

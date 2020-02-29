@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     pg (1.1.4)
-    rake (12.3.2)
+    rake (12.3.3)
     sequel (5.20.0)
 
 PLATFORMS

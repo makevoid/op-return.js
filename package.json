@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bitcore-lib": "^8.3.0",
     "blockchain-api-basic": "^0.4.2",
     "querystring": "^0.2.0",
